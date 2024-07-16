@@ -89,7 +89,9 @@ public class TextInputHandler {
                     if (currentInput.length() > 0) {
                         chatHistory.add(currentInput.toString());
                         System.out.println("Added to chat history: " + currentInput.toString());
-                        // Handle the command here if needed
+
+                        // TODO: Handle commands here
+
                         currentInput.setLength(0);
                         System.out.println("Current input cleared after adding to chat history");
                     } else {

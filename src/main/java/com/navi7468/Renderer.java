@@ -79,18 +79,19 @@ public class Renderer {
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glLoadIdentity();
 
-        blockRenderer = new BlockRenderer();
         try {
             bitmapFont = new BitmapFont("textures/fonts/font.png", "src/main/resources/textures/fonts/font.fnt");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        blockRenderer = new BlockRenderer();
         // chunk = new Chunk();
         NoiseGenerator noise = new NoiseGenerator();
-        world = new World(10, 256, noise);
+        world = new World(50, 256, noise);
 
         // Initialize UIHandler
-        uiHandler = new UIHandler(bitmapFont, 8.0f); // Adjust line spacing as needed
+        uiHandler = new UIHandler(bitmapFont, 8.0f);
 
         // Initialize TextInputHandler
         textInputHandler = new TextInputHandler(bitmapFont);
@@ -115,7 +116,7 @@ public class Renderer {
                 GL11.glViewport(0, 0, width, height);
                 GL11.glMatrixMode(GL11.GL_PROJECTION);
                 GL11.glLoadIdentity();
-                camera.setPerspective(settings.cameraFov, (float) width / height, 0.1f, 100.0f);
+                camera.setPerspective(settings.cameraFov, (float) width / height, settings.cameraNear, settings.cameraFar);
                 GL11.glMatrixMode(GL11.GL_MODELVIEW);
                 GL11.glLoadIdentity();
             }

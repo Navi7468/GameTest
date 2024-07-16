@@ -92,6 +92,6 @@ public class GameLogic {
 
     // Runs every tick
     public void fixedUpdate() {
-        // Any fixed update logic can go here if needed
+        // Any fixed update logic can go here
     }
 }
